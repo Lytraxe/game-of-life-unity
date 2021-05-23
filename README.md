@@ -10,6 +10,6 @@ Rules are simple :
 
 This project is pretty much based on the same concept. For now, the initial state is randomely generated. theres a Button to start the Game and a slider to control the evolution speed.
 
-The `Cell.cs` script contains the properties of Cell. And `Game.cs` contains the rest of the logic. At the moment, It randomely sets Alive state of cells at the start, but you could add a manual way to do that. Just remove the line `grid[x, y].SetAlive(RandomAlive());` from `Game.cs/PlaceCells()` and use mouse click events in `Cell.cs`.
+The `Cell.cs` script contains the properties of Cell. And `Game.cs` contains the rest of the logic. At the moment, It randomely sets Alive state of cells at the start, but you could add a manual way to do that. Just remove the line `grid[x, y].SetAlive(RandomAlive());` from `Game.cs/PlaceCells()` and add some mouse click events in `Cell.cs`.
 
 ### Project was made with Unity version 2019.3.11f1.
