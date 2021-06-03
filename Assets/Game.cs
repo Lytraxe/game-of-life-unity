@@ -12,14 +12,33 @@ public class Game : MonoBehaviour
 
     private float timer;
     private bool isGameStarted = false;
+    private bool isRandom = false;
 
     Cell[,] grid = new Cell[WIDTH, HEIGHT];
+
+    private void Start()
+    {
+        PlaceCells();
+    }
 
     //Start the game
     public void StartGame()
     {
-        PlaceCells();
+        //PlaceCells();
         isGameStarted = true;
+    }
+
+    public void ResetGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public void PauseGame()
+    {
+        if (isGameStarted)
+            isGameStarted = false;
+        else
+            isGameStarted = true;
     }
 
     public void ChangeSpeed(float sliderSpeed)
@@ -51,13 +70,18 @@ public class Game : MonoBehaviour
 	{
 		for(int y = 0; y < HEIGHT; y++)
 		{
-			for(int x = 0; x < WIDTH; x++)
-			{
+            for (int x = 0; x < WIDTH; x++)
+            {
                 var obj = Instantiate(cellPref, new Vector2(x, y), Quaternion.identity);
                 Cell cell = obj.GetComponent<Cell>();
-				grid[x, y] = cell;
-				grid[x, y].SetAlive(RandomAlive());
-			}
+                grid[x, y] = cell;
+                if (isRandom)
+                {
+                    grid[x, y].SetAlive(RandomAlive());
+                }
+                else
+                    grid[x, y].SetAlive(false);
+            }
 		}
 	}
 	

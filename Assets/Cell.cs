@@ -12,11 +12,21 @@ public class Cell : MonoBehaviour
         isAlive = alive;
         if(alive)
         {
-            GetComponent<SpriteRenderer>().enabled = true;
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
         }
         else
         {
-            GetComponent<SpriteRenderer>().enabled = false;
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
+    }
+
+    void OnMouseDown()
+    {
+        if (!isAlive)
+        {
+            SetAlive(true);
+        }
+        else
+            SetAlive(false);
     }
 }
